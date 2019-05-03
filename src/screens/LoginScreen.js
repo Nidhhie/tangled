@@ -3,6 +3,7 @@ import FloatingLabelInput from '../components/FloatingLabelInput';
 import { View, StyleSheet, KeyboardAvoidingView } from 'react-native';
 import Heading from '../components/Heading';
 import Footer from '../components/Footer';
+import Images from "../Constants/Images";
 
 export default class LoginScreen extends React.Component {
     static navigationOptions = {
@@ -46,7 +47,7 @@ export default class LoginScreen extends React.Component {
                             onChangeText={(value) => this.handleTextChange(value, eachInput.name)}
                         />))}
                 </View>
-                <Footer onPress={this.onContinue} title={'Continue'} />
+                <Footer onPress={this.onContinue} title={'Continue'} icon={Images.forwardArrow} />
             </KeyboardAvoidingView>
         )
     }
