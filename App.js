@@ -7,7 +7,7 @@ import rootReducer from './src/redux/rootReducer'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer);
 
 export default class App extends React.Component {
   state = {

@@ -3,11 +3,11 @@ import {Text,StyleSheet} from 'react-native';
 
 const Heading = ({children,size,color,gutterbottom}) => (
     <Text style={{...styles.title,fontSize:size,color,paddingBottom:gutterbottom}}> {children} </Text>
-)
+);
 
 const styles = StyleSheet.create({
     title: {fontWeight: 'bold' }
-})
+});
 
 Heading.defaultProps = {
     color: 'black',

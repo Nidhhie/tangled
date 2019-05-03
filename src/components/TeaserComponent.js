@@ -30,7 +30,7 @@ const TeaserComponent = ({ teaser }) => {
             </View>
         </View>
     )
-}
+};
 const styles = StyleSheet.create({
     container: { backgroundColor: Colors.white },
     header: { backgroundColor: Colors.black, height: 40, justifyContent: 'center' },
@@ -38,6 +38,6 @@ const styles = StyleSheet.create({
     teaserImage: { height: height / 3, width },
     playIcon: { height:40, width:40 }
 
-})
+});
 
 export default TeaserComponent;

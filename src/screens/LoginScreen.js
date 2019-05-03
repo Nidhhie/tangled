@@ -29,7 +29,7 @@ export default class LoginScreen extends React.Component {
     };
     handleTextChange = (value, name) => this.setState({ name: value });
 
-    onContinue = () => this.props.navigation.navigate('Home')
+    onContinue = () => this.props.navigation.navigate('Home');
 
     render() {
         return (
@@ -54,4 +54,4 @@ export default class LoginScreen extends React.Component {
 
 const styles = StyleSheet.create({
     container: { flex: 1, paddingHorizontal: 25, paddingVertical: 35, height: '100%' }
-})
+});

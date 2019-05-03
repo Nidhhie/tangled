@@ -1,2 +1,2 @@
-const reducer = () => {}
+const reducer = () => {};
 export default reducer 

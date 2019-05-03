@@ -9,7 +9,7 @@ const Footer = ({title,onPress}) => (
         {title}
     </Heading>
 </TouchableOpacity>
-)
+);
 
 const styles = StyleSheet.create({
     footer: {
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center'
      }
-})
+});
 
 
 export default Footer;
