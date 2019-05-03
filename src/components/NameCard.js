@@ -1,21 +1,23 @@
 import React from 'react';
 import {Text,View,StyleSheet} from 'react-native';
 import Colors from '../Constants/Colors';
+import Heading from "./Heading";
 
-const NameCard = () => {
+const NameCard = ({details}) => {
+    const {title,option,name} = details;
 return(
+    <View style={styles.nameContainer}>
     <View>
-    <View>
-      <Text>
-          First Name
+        <Text style={{...styles.textGrey,paddingBottom: 5}}>
+          {title}
       </Text>
     </View>
-    <View>
+    <View style={styles.details}>
        <Heading>
-           Priya
+           {name}
            </Heading> 
-           <Text>
-            Edit
+           <Text style={styles.textGrey}>
+            {option}
            </Text>
     </View>
 </View>
@@ -24,5 +26,18 @@ return(
 };
 
 
-
+const styles = StyleSheet.create({
+   nameContainer: {
+       backgroundColor: Colors.white,
+       padding:18,
+       marginVertical: 5
+   },
+    details:{
+       flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    textGrey:{
+       color:Colors.textGrey
+    }
+});
 export default NameCard;
