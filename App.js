@@ -6,13 +6,18 @@ import AppNavigator from './src/navigation/AppNavigator';
 import rootReducer from './src/redux/rootReducer'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import Gen from "./src/Utils/Gen";
 
 const store = createStore(rootReducer);
 
 export default class App extends React.Component {
-  state = {
-    isReady: false,
-  };
+   constructor(props){
+    super(props);
+    this.state = {
+      isReady: false,
+    };
+
+  }
 
   render() {
     if (!this.state.isReady) {
@@ -36,7 +41,7 @@ export default class App extends React.Component {
     return new Promise(function(resolve, reject){
 			setTimeout(function(){
 				resolve();
-      }, 200)})
-     
+      }, 300)})
+
   }
 }

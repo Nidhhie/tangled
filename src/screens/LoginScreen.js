@@ -4,6 +4,7 @@ import { View, StyleSheet, KeyboardAvoidingView } from 'react-native';
 import Heading from '../components/Heading';
 import Footer from '../components/Footer';
 import Images from "../Constants/Images";
+import Gen from "../Utils/Gen";
 
 export default class LoginScreen extends React.Component {
     static navigationOptions = {
@@ -30,7 +31,10 @@ export default class LoginScreen extends React.Component {
     };
     handleTextChange = (value, name) => this.setState({ name: value });
 
-    onContinue = () => this.props.navigation.navigate('Home');
+    onContinue = () => {
+        Gen.login();
+        this.props.navigation.navigate('Home')
+    };
 
     render() {
         return (
