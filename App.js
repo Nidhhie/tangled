@@ -3,6 +3,11 @@ import { Image, Text, View } from 'react-native';
 import { Asset, AppLoading } from 'expo';
 import LoginScreen from './src/screens/LoginScreen';
 import AppNavigator from './src/navigation/AppNavigator';
+import rootReducer from './src/redux/rootReducer'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+
+const store = createStore(rootReducer)
 
 export default class App extends React.Component {
   state = {
@@ -21,7 +26,9 @@ export default class App extends React.Component {
     }
 
     return (
+      <Provider store={store}>
       <AppNavigator/>
+      </Provider>
     );
   }
 
