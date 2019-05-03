@@ -1,8 +1,9 @@
 import React from 'react';
-import {View,StyleSheet,Text} from 'react-native';
+import {View,StyleSheet,Text,TouchableOpacity} from 'react-native';
 import Colors from '../Constants/Colors';
 import NameCard from "../components/NameCard";
 import {customNavigationOptions} from "../navigation/AppNavigator";
+import Gen from "../Utils/Gen";
 
 export default class ProfileScreen extends React.Component {
     static navigationOptions = ({navigation}) => (customNavigationOptions({navigation,title:"Edit Personal Details"}));
@@ -24,6 +25,11 @@ export default class ProfileScreen extends React.Component {
         ]
     }
 
+    logout = async() => {
+       await Gen.logout();
+       this.props.navigation.navigate('Login');
+    };
+
 
     render() {
         return (
@@ -31,9 +37,9 @@ export default class ProfileScreen extends React.Component {
                 <View style={{flex:0.4}}>
                 {this.nameDetails.map((eachName, index) => <NameCard key={index} details={eachName}/>)}
                 </View>
-                <View style={{flex:0.5,alignItems: 'center'}}>
+                <TouchableOpacity onPress={this.logout} style={{flex:0.5,alignItems: 'center'}}>
                     <Text style={{color:'red'}}> Logout </Text>
-                </View>
+                </TouchableOpacity>
                 <View style={{flex:0.1,alignItems: 'center'}}>
                     <Text style={{color:Colors.textGrey}}> Demo App </Text>
                     <Text style={{color:Colors.textGrey}}> v1.02 </Text>

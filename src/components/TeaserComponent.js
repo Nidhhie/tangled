@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, View, Text } from 'react-native';
+import { Image, StyleSheet, View, Text,Platform } from 'react-native';
 import Gen from '../Utils/Gen';
 import Colors from '../Constants/Colors';
 import Heading from './Heading';
@@ -12,7 +12,7 @@ const TeaserComponent = ({ teaser }) => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text style={{ color: Colors.white, opacity: 0.4 }}> TEASER {index}</Text>
+                <Text style={{ color: Colors.white, opacity: Platform.OS === 'ios'? 0.8 : 0.4 }}> TEASER {index+1}</Text>
             </View>
             <Image source={image} style={styles.teaserImage} />
             <View style={styles.footer}>
