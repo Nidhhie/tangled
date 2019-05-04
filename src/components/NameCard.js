@@ -1,24 +1,26 @@
 import React from 'react';
-import {Text,View,StyleSheet} from 'react-native';
+import {Text,View,StyleSheet,TouchableOpacity} from 'react-native';
 import Colors from '../Constants/Colors';
 import Heading from "./Heading";
 
-const NameCard = ({details}) => {
-    const {title,option,name} = details;
+const NameCard = ({details,onPressEditButton}) => {
+    const {label,option,name} = details;
 return(
     <View style={styles.nameContainer}>
     <View>
         <Text style={{...styles.textGrey,paddingBottom: 5}}>
-          {title}
+          {label}
       </Text>
     </View>
     <View style={styles.details}>
        <Heading>
            {name}
-           </Heading> 
+           </Heading>
+        <TouchableOpacity onPress={onPressEditButton}>
            <Text style={styles.textGrey}>
             {option}
            </Text>
+        </TouchableOpacity>
     </View>
 </View>
 

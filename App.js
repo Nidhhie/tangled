@@ -41,7 +41,7 @@ export default class App extends React.Component {
     return new Promise(function(resolve, reject){
 			setTimeout(function(){
 				resolve();
-      }, 300)})
+      }, 30)})
 
   }
 }

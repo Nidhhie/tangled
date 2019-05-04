@@ -2,7 +2,7 @@ import React from 'react';
 import {View,StyleSheet,Text,TouchableOpacity} from 'react-native';
 import Colors from '../Constants/Colors';
 import NameCard from "../components/NameCard";
-import {customNavigationOptions} from "../navigation/AppNavigator";
+import {customNavigationOptions} from "../navigation/navigationOptions";
 import Gen from "../Utils/Gen";
 
 export default class ProfileScreen extends React.Component {
@@ -13,14 +13,16 @@ export default class ProfileScreen extends React.Component {
 
         this.nameDetails = [
             {
-                title: 'First Name',
+                label: 'First Name',
+                name:'firstName',
                 option: 'Edit',
-                name: 'Priya'
+                value: 'Priya'
             },
             {
-                title: 'Last Name',
+                label: 'Last Name',
+                name:'lastName',
                 option: 'Edit',
-                name: 'Abc'
+                value: 'Abc'
             }
         ]
     }
@@ -30,12 +32,15 @@ export default class ProfileScreen extends React.Component {
        this.props.navigation.navigate('Login');
     };
 
+    onPressEditButton = (name) => {
+           this.props.navigation.navigate('EditName',{name})
+    };
 
     render() {
         return (
             <View style={styles.container}>
                 <View style={{flex:0.4}}>
-                {this.nameDetails.map((eachName, index) => <NameCard key={index} details={eachName}/>)}
+                {this.nameDetails.map((eachName, index) => <NameCard key={index} onPressEditButton={()=>this.onPressEditButton(eachName)} details={eachName}/>)}
                 </View>
                 <TouchableOpacity onPress={this.logout} style={{flex:0.5,alignItems: 'center'}}>
                     <Text style={{color:'red'}}> Logout </Text>

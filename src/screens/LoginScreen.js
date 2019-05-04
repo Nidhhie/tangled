@@ -1,62 +1,68 @@
 import React from 'react';
-import FloatingLabelInput from '../components/FloatingLabelInput';
-import { View, StyleSheet, KeyboardAvoidingView } from 'react-native';
-import Heading from '../components/Heading';
-import Footer from '../components/Footer';
 import Images from "../Constants/Images";
 import Gen from "../Utils/Gen";
+import CustomFormWithFooter from "../components/CustomFormWithFooter";
 
 export default class LoginScreen extends React.Component {
     static navigationOptions = {
         header: null
-    }
+    };
+
     constructor(props) {
         super(props);
         this.state = {
-            firstName: "",
-            lastName: ""
+            loginInputs: [
+                {
+                    name: 'firstName',
+                    label: "First Name",
+                    onChange: this.handleTextChange,
+                    value: ""
+                },
+                {
+                    name: 'lastName',
+                    label: "Last Name",
+                    onChange: this.handleTextChange,
+                    value: ""
+                }
+            ]
         };
-        this.loginInputs = [
-            {
-                name: 'firstName',
-                label: "First Name",
-                onChange: this.handleTextChange
-            },
-            {
-                name: 'lastName',
-                label: "Last Name",
-                onChange: this.handleTextChange
-            }
-        ]
+
     };
-    handleTextChange = (value, name) => this.setState({ name: value });
+
+    handleTextChange = (value, name) => this.setState(prevState => ({
+        loginInputs: prevState.loginInputs.map(
+            input => (input.name === name ? {...input, value} : input)
+        )
+    }));
 
     onContinue = () => {
+        const {loginInputs} = this.state;
+        let isEmpty;
+        loginInputs.forEach((input)=>{
+           if(input.value.length === 0)
+               isEmpty = true;
+        });
+
+       if(isEmpty){
+           alert('please enter your name');
+           return
+       }
         Gen.login();
         this.props.navigation.navigate('Home')
     };
 
     render() {
         return (
-            <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
-                <View style={styles.container}>
-                    <Heading size={18}>
-                        Hey, What should we call you?
-                </Heading>
-                    {this.loginInputs.map((eachInput, index) => (
-                        <FloatingLabelInput
-                            key={index}
-                            label={eachInput.label}
-                            value={this.state[eachInput.name]}
-                            onChangeText={(value) => this.handleTextChange(value, eachInput.name)}
-                        />))}
-                </View>
-                <Footer onPress={this.onContinue} title={'Continue'} icon={Images.forwardArrow} />
-            </KeyboardAvoidingView>
+            <CustomFormWithFooter inputs={this.state.loginInputs}
+                                  handleTextChange={this.handleTextChange}
+                                  footer={{
+                                      onPressFooter: this.onContinue,
+                                      title: 'Continue',
+                                      icon: Images.forwardArrow
+                                  }}
+                                  heading={"Hey, What should we call you?"}
+            />
         )
     }
 }
 
-const styles = StyleSheet.create({
-    container: { flex: 1, paddingHorizontal: 25, paddingVertical: 35, height: '100%' }
-});
