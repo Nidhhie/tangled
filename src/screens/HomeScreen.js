@@ -19,6 +19,7 @@ import WhiteButton from '../components/WhiteButton';
 import Colors from '../Constants/Colors';
 import TangledText from '../components/TangledText';
 import {SafeAreaView} from "react-navigation";
+import {ScreenNames} from "../navigation/ScreenNames";
 
 const {height, width} = Gen.getDimensions();
 export default class HomeScreen extends React.Component {
@@ -45,7 +46,7 @@ export default class HomeScreen extends React.Component {
     }
 
     onPressTrailerButton = () => {
-        this.props.navigation.navigate('Profile')
+        this.props.navigation.navigate(ScreenNames.Profile.key)
     };
 
     _onRefresh = () => {

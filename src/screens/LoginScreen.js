@@ -10,6 +10,7 @@ import Footer from "../components/Footer";
 import User from "../Constants/User";
 import TermsAndConditionsText from "../components/TermsAndConditionsText";
 import {SafeAreaView} from "react-navigation";
+import {ScreenNames} from "../navigation/ScreenNames";
 
 class LoginScreen extends React.Component {
     static navigationOptions = {
@@ -34,7 +35,7 @@ class LoginScreen extends React.Component {
             return
         }
         this.props.saveUser(user);
-        this.props.navigation.navigate('Home')
+        this.props.navigation.navigate(ScreenNames.Home.key)
     };
 
     render() {

@@ -1,16 +1,8 @@
 import React from 'react';
 import {createAppContainer, createStackNavigator, createSwitchNavigator} from 'react-navigation';
 import LoginScreen from '../screens/LoginScreen';
-import HomeScreen from '../screens/HomeScreen';
-import ProfileScreen from '../screens/ProfileScreen';
-import EditNameScreen from '../screens/EditNameScreen';
 import StartScreen from "../screens/StartScreen";
-
-export const ScreenNames = {
-    Home: {key: 'Home', value: HomeScreen},
-    Profile: {key: 'Profile', value: ProfileScreen},
-    EditName: {key: 'EditName', value: EditNameScreen}
-};
+import {ScreenNames} from "./ScreenNames";
 
 const data = {};
 Object.values(ScreenNames).forEach((s) => {
@@ -39,6 +31,8 @@ const createRootNavigator = createSwitchNavigator(
         initialRouteName: "Start"
     }
 );
+
+
 
 
 export default createAppContainer(createRootNavigator);

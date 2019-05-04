@@ -8,6 +8,7 @@ import User from "../Constants/User";
 import {bindActionCreators} from "redux";
 import {saveUser} from "../redux/actions";
 import TangledText from "../components/TangledText";
+import {ScreenNames} from "../navigation/ScreenNames";
 
 class ProfileScreen extends React.Component {
     static navigationOptions = ({navigation}) => (customNavigationOptions({
@@ -31,7 +32,7 @@ class ProfileScreen extends React.Component {
     };
 
     onPressEditButton = (nameDetails) => {
-        this.props.navigation.navigate('EditName', {nameDetails})
+        this.props.navigation.navigate(ScreenNames.EditName.key, {nameDetails})
     };
 
     static getDerivedStateFromProps(nextProps, prevState) {
