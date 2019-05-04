@@ -1,15 +1,8 @@
 import React from 'react';
-import { Image, Text, View } from 'react-native';
-import { Asset, AppLoading } from 'expo';
-import LoginScreen from './src/screens/LoginScreen';
+import {AppLoading} from 'expo';
 import AppNavigator from './src/navigation/AppNavigator';
-import rootReducer from './src/redux/rootReducer'
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import Gen from "./src/Utils/Gen";
-
-const store = createStore(rootReducer);
-
+import {Provider} from 'react-redux'
+import { persistor, store } from './src/redux/store';
 export default class App extends React.Component {
    constructor(props){
     super(props);

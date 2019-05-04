@@ -1,12 +1,13 @@
 import React from 'react';
 import {View} from 'react-native';
 import Gen from "../Utils/Gen";
+import {connect} from 'react-redux'
 
-
-export default class StartScreen extends React.Component{
+ class StartScreen extends React.Component{
     async componentDidMount() {
-        const isLoggedIn = await Gen.isUserLogged();
-        this.props.navigation.navigate(isLoggedIn ? 'App' : 'Login');
+        const {user} = this.props;
+        debugger
+        this.props.navigation.navigate(user ? 'App' : 'Login');
     }
 
     render(){
@@ -15,3 +16,11 @@ export default class StartScreen extends React.Component{
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.user,
+    };
+};
+
+export default connect(mapStateToProps)(StartScreen);

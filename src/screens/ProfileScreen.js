@@ -1,55 +1,66 @@
 import React from 'react';
-import {View,StyleSheet,Text,TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import Colors from '../Constants/Colors';
 import NameCard from "../components/NameCard";
 import {customNavigationOptions} from "../navigation/navigationOptions";
 import Gen from "../Utils/Gen";
+import {connect} from 'react-redux';
+import User from "../Constants/User";
+import {bindActionCreators} from "redux";
+import {saveUser} from "../redux/actions";
 
-export default class ProfileScreen extends React.Component {
-    static navigationOptions = ({navigation}) => (customNavigationOptions({navigation,title:"Edit Personal Details"}));
+class ProfileScreen extends React.Component {
+    static navigationOptions = ({navigation}) => (customNavigationOptions({
+        navigation,
+        title: "Edit Personal Details"
+    }));
 
     constructor(props) {
         super(props);
-
-        this.nameDetails = [
-            {
-                label: 'First Name',
-                name:'firstName',
-                option: 'Edit',
-                value: 'Priya'
-            },
-            {
-                label: 'Last Name',
-                name:'lastName',
-                option: 'Edit',
-                value: 'Abc'
+        const {firstName, lastName} = this.props.user;
+        this.state = {
+            user: {
+                firstName, lastName
             }
-        ]
+        };
     }
 
-    logout = async() => {
-       await Gen.logout();
-       this.props.navigation.navigate('Login');
+    logout = async () => {
+        this.props.saveUser(null);
+        this.props.navigation.navigate('Login');
     };
 
-    onPressEditButton = (name) => {
-           this.props.navigation.navigate('EditName',{name})
+    onPressEditButton = (nameDetails) => {
+        this.props.navigation.navigate('EditName',{nameDetails})
     };
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.user !== prevState.user) {
+            return {user: nextProps.user};
+        } else return null;
+    }
 
     render() {
+        const {user} = this.state;
         return (
             <View style={styles.container}>
-                <View style={{flex:0.4}}>
-                {this.nameDetails.map((eachName, index) => <NameCard key={index} onPressEditButton={()=>this.onPressEditButton(eachName)} details={eachName}/>)}
+                <View style={{flex: 0.4}}>
+                    {
+                       User.map((item,index)=> <NameCard
+                                  key={index}
+                                  onPressEditButton={() => this.onPressEditButton({...item, value: user[item.name]})}
+                                  details={{...item, value: user[item.name]}}
+                        />
+                       )}
                 </View>
-                <TouchableOpacity onPress={this.logout} style={{flex:0.5,alignItems: 'center'}}>
-                    <Text style={{color:'red'}}> Logout </Text>
+                <TouchableOpacity onPress={this.logout} style={{flex: 0.5, alignItems: 'center'}}>
+                    <Text style={{color: 'red'}}> Logout </Text>
                 </TouchableOpacity>
-                <View style={{flex:0.1,alignItems: 'center'}}>
-                    <Text style={{color:Colors.textGrey}}> Demo App </Text>
-                    <Text style={{color:Colors.textGrey}}> v1.02 </Text>
+                <View style={{flex: 0.1, alignItems: 'center'}}>
+                    <Text style={{color: Colors.textGrey}}> Demo App </Text>
+                    <Text style={{color: Colors.textGrey}}> v1.02 </Text>
                 </View>
-                </View>
+            </View>
 
         )
     }
@@ -58,3 +69,16 @@ export default class ProfileScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {backgroundColor: Colors.grey, flex: 1}
 });
+
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({saveUser}, dispatch)
+}
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.user,
+    };
+};
+
+export default connect(mapStateToProps,mapDispatchToProps())(ProfileScreen);

@@ -4,7 +4,7 @@ import Colors from '../Constants/Colors';
 import Heading from "./Heading";
 
 const NameCard = ({details,onPressEditButton}) => {
-    const {label,option,name} = details;
+    const {label,option,value} = details;
 return(
     <View style={styles.nameContainer}>
     <View>
@@ -14,11 +14,11 @@ return(
     </View>
     <View style={styles.details}>
        <Heading>
-           {name}
+           {value}
            </Heading>
         <TouchableOpacity onPress={onPressEditButton}>
            <Text style={styles.textGrey}>
-            {option}
+            Edit
            </Text>
         </TouchableOpacity>
     </View>
