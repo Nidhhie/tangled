@@ -1,22 +1,24 @@
 import React from 'react';
-import { Text, View, ImageBackground, Image, ScrollView, StyleSheet } from 'react-native';
+import { Text, View, ImageBackground, Image, ScrollView, StyleSheet,RefreshControl } from 'react-native';
 import Images from '../Constants/Images';
 import Gen from '../Utils/Gen';
 import { LinearGradient } from 'expo';
 import TeaserComponent from '../components/TeaserComponent';
 import WhiteButton from '../components/WhiteButton';
 import Colors from '../Constants/Colors';
-import Heading from '../components/Heading';
+import TangledText from '../components/TangledText';
 
 const { height, width } = Gen.getDimensions();
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
         header: null
-    }
+    };
 
     constructor(props) {
         super(props);
+      this.state={
 
+      };
         this.teasers = [
             {
                 title: "Tangled - I See the Light (HD)",
@@ -34,24 +36,36 @@ export default class HomeScreen extends React.Component {
 
     onPressTrailerButton = () => {
         this.props.navigation.navigate('Profile')
-    }
+    };
+
+    _onRefresh = () => {
+        this.setState({refreshing: true});
+        setTimeout(()=>this.setState({refreshing: false}),1000)
+    };
 
     render() {
         return (
-            <ScrollView style={{ flex: 1 }}>
+            <ScrollView
+                refreshControl={
+                    <RefreshControl
+                       refreshing={this.state.refreshing}
+                        onRefresh={this._onRefresh}
+                    />
+                }
+                style={{ flex: 1 }}>
                 <ImageBackground source={Images.tangled} style={styles.tangledImage}>
                     <LinearGradient style={{ height: height / 2.2 }}
                         colors={['transparent', 'transparent', 'transparent', 'black']}>
                         <View style={{ flex: 0.1, justifyContent: 'center', alignItems: 'center' }}>
-                            <Text style={{ color: Colors.white }}> Pull to refresh </Text>
+                            <TangledText style={{ color: Colors.white }}> Pull to refresh </TangledText>
                         </View>
                         <View style={{ flex: 0.9, justifyContent: 'flex-end', alignItems: 'center' }}>
-                            <Heading color={Colors.white} size={24}>
+                            <TangledText bold color={Colors.white} size={24}>
                                 Tangled
-                        </Heading>
-                        <Text style={{ color: Colors.white,opacity:0.5 }}> 
+                        </TangledText>
+                        <TangledText style={{ color: Colors.white,opacity:0.5 }}>
                         2010   •    7+   •   1h 40m
-                         </Text>
+                         </TangledText>
                             <WhiteButton 
                             onPress={this.onPressTrailerButton}
                             title={"Watch Trailer"}

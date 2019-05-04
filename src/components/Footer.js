@@ -1,13 +1,13 @@
 import React from 'react';
 import {Text,StyleSheet,TouchableOpacity,Image} from 'react-native';
 import Colors from '../Constants/Colors';
-import Heading from './Heading';
+import TangledText from './TangledText';
 
 const Footer = ({title,onPress,icon}) => (
 <TouchableOpacity onPress={onPress} style={styles.footer}>
-    <Heading color={Colors.white}>
+    <TangledText bold color={Colors.white}>
         {title}
-    </Heading>
+    </TangledText>
     {icon && <Image source={icon} style={{height:15}} resizeMode={'contain'}/>}
 </TouchableOpacity>
 );

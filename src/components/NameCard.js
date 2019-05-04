@@ -1,25 +1,25 @@
 import React from 'react';
 import {Text,View,StyleSheet,TouchableOpacity} from 'react-native';
 import Colors from '../Constants/Colors';
-import Heading from "./Heading";
+import TangledText from "./TangledText";
 
 const NameCard = ({details,onPressEditButton}) => {
     const {label,option,value} = details;
 return(
     <View style={styles.nameContainer}>
     <View>
-        <Text style={{...styles.textGrey,paddingBottom: 5}}>
+        <TangledText style={{...styles.textGrey,paddingBottom: 5}}>
           {label}
-      </Text>
+      </TangledText>
     </View>
     <View style={styles.details}>
-       <Heading>
+       <TangledText>
            {value}
-           </Heading>
+           </TangledText>
         <TouchableOpacity onPress={onPressEditButton}>
-           <Text style={styles.textGrey}>
+           <TangledText style={styles.textGrey}>
             Edit
-           </Text>
+           </TangledText>
         </TouchableOpacity>
     </View>
 </View>

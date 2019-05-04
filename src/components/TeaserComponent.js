@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, StyleSheet, View, Text,Platform } from 'react-native';
 import Gen from '../Utils/Gen';
 import Colors from '../Constants/Colors';
-import Heading from './Heading';
+import TangledText from './TangledText';
 import Images from '../Constants/Images';
 
 const { height, width } = Gen.getDimensions();
@@ -12,15 +12,15 @@ const TeaserComponent = ({ teaser }) => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text style={{ color: Colors.white, opacity: Platform.OS === 'ios'? 0.8 : 0.4 }}> TEASER {index+1}</Text>
+                <TangledText style={{ color: Colors.white, opacity: Platform.OS === 'ios'? 0.8 : 0.4 }}> TEASER {index+1}</TangledText>
             </View>
             <Image source={image} style={styles.teaserImage} />
             <View style={styles.footer}>
                 <View style={{ flex: 0.7 }}>
-                <Heading size={18}>
+                <TangledText bold size={18}>
                     {title}
-                </Heading>
-                <Text>  {details}</Text>
+                </TangledText>
+                <TangledText>  {details}</TangledText>
                 </View>
                 <View style={{ flex: 0.3,alignItems:'flex-end',justifyContent:'center' }}>
                 <Image source={Images.playIcon}

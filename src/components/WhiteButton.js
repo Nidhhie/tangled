@@ -2,13 +2,13 @@ import React from 'react';
 import {TouchableOpacity,Text,StyleSheet,Image} from 'react-native';
 import Colors from '../Constants/Colors';
 import Images from '../Constants/Images';
-import Heading from './Heading';
+import TangledText from './TangledText';
 
 const WhiteButton = ({title,onPress}) => {
 return(
     <TouchableOpacity onPress={onPress} style={styles.button}>
         <Image source={Images.playIcon} style={{height:30,width:20}} resizeMode="contain"/>
-        <Heading> {title} </Heading>
+        <TangledText bold> {title} </TangledText>
     </TouchableOpacity>
 )
 };

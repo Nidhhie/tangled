@@ -8,7 +8,7 @@ import {KeyboardAvoidingView, StyleSheet, View} from "react-native";
 import Colors from "../Constants/Colors";
 import Footer from "../components/Footer";
 import FloatingLabelInput from "../components/FloatingLabelInput";
-import Heading from "../components/Heading";
+import TangledText from "../components/TangledText";
 
 class EditNameScreen extends React.Component{
     static navigationOptions = {
@@ -43,9 +43,9 @@ class EditNameScreen extends React.Component{
             <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
                 <View style={styles.container}>
                     <Ionicons onPress={()=>this.props.navigation.goBack()} name={'ios-close'} color={Colors.textGrey} size={36}/>
-                    <Heading size={18}>
+                    <TangledText bold size={18}>
                         Update your Name
-                    </Heading>
+                    </TangledText>
                         <FloatingLabelInput
                             label={label}
                             value={name}

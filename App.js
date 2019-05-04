@@ -1,5 +1,5 @@
 import React from 'react';
-import {AppLoading} from 'expo';
+import {AppLoading,Font} from 'expo';
 import AppNavigator from './src/navigation/AppNavigator';
 import {Provider} from 'react-redux'
 import { persistor, store } from './src/redux/store';
@@ -31,10 +31,10 @@ export default class App extends React.Component {
   }
 
   async _cacheResourcesAsync() {
-    return new Promise(function(resolve, reject){
-			setTimeout(function(){
-				resolve();
-      }, 30)})
+    return Font.loadAsync({
+      'helvetica-bold': require('./assets/fonts/Helvetica-Bold.ttf'),
+      'helvetica': require('./assets/fonts/helvetica-light-587ebe5a59211.ttf'),
+    });
 
   }
 }

@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import User from "../Constants/User";
 import {bindActionCreators} from "redux";
 import {saveUser} from "../redux/actions";
+import TangledText from "../components/TangledText";
 
 class ProfileScreen extends React.Component {
     static navigationOptions = ({navigation}) => (customNavigationOptions({
@@ -53,11 +54,11 @@ class ProfileScreen extends React.Component {
                        )}
                 </View>
                 <TouchableOpacity onPress={this.logout} style={{flex: 0.5, alignItems: 'center'}}>
-                    <Text style={{color: 'red'}}> Logout </Text>
+                    <TangledText style={{color: 'red'}}> Logout </TangledText>
                 </TouchableOpacity>
                 <View style={{flex: 0.1, alignItems: 'center'}}>
-                    <Text style={{color: Colors.textGrey}}> Demo App </Text>
-                    <Text style={{color: Colors.textGrey}}> v1.02 </Text>
+                    <TangledText style={{color: Colors.textGrey}}> Demo App </TangledText>
+                    <TangledText style={{color: Colors.textGrey}}> v1.02 </TangledText>
                 </View>
             </View>
 
