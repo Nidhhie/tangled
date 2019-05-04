@@ -66,7 +66,6 @@ export default class HomeScreen extends React.Component {
                 }
                 style={{ flex: 1 }}>
                 <SafeAreaView style={{flex:1}}>
-                    <StatusBar/>
                 <ImageBackground source={Images.tangled} style={styles.tangledImage}>
                     <LinearGradient style={{ height: height / 1.8 }}
                         colors={['transparent', 'transparent', 'transparent', 'black']}>

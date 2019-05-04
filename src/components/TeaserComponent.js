@@ -17,7 +17,7 @@ const TeaserComponent = ({ teaser }) => {
             <Image source={image} style={styles.teaserImage} />
             <View style={styles.footer}>
                 <View style={{ flex: 0.8 }}>
-                <TangledText gutterbottom={true} bold>
+                <TangledText gutterbottom={Platform.OS==='ios'?4 :0} bold>
                     {title}
                 </TangledText>
                 <TangledText size={14} color={Colors.textGrey}>{details}</TangledText>
@@ -25,7 +25,8 @@ const TeaserComponent = ({ teaser }) => {
                 <View style={{ flex: 0.2,alignItems:'flex-end',justifyContent:'center' }}>
                 <Image source={Images.playIcon}
                 resizeMode={'contain'}
-                 style={styles.playIcon} />       
+                 style={styles.playIcon}
+                />
                 </View>
             </View>
         </View>

@@ -2,7 +2,7 @@ import React from 'react';
 import {bindActionCreators} from "redux";
 import {saveUser} from '../redux/actions';
 import {connect} from 'react-redux';
-import {KeyboardAvoidingView, StyleSheet, View, Text, ScrollView} from "react-native";
+import {KeyboardAvoidingView, StyleSheet, View, Text, ScrollView,StatusBar} from "react-native";
 import Images from "../Constants/Images";
 import FloatingLabelInput from "../components/FloatingLabelInput";
 import TangledText from "../components/TangledText";

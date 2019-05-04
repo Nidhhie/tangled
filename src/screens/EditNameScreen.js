@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 import {saveUser} from "../redux/actions";
 import Gen from "../Utils/Gen";
-import {KeyboardAvoidingView, StyleSheet, View} from "react-native";
+import {KeyboardAvoidingView, StatusBar, StyleSheet, View} from "react-native";
 import Colors from "../Constants/Colors";
 import Footer from "../components/Footer";
 import FloatingLabelInput from "../components/FloatingLabelInput";
@@ -42,7 +42,7 @@ class EditNameScreen extends React.Component {
         return (
             <KeyboardAvoidingView style={{flex: 1}} behavior="padding">
                 <SafeAreaView style={{flex:1}}>
-                <View style={styles.container}>
+                    <View style={styles.container}>
                     <Ionicons onPress={() => this.props.navigation.goBack()}
                               name={'ios-close'}
                               color={Colors.textGrey}

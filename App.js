@@ -3,6 +3,8 @@ import {AppLoading,Font} from 'expo';
 import AppNavigator from './src/navigation/AppNavigator';
 import {Provider} from 'react-redux'
 import { persistor, store } from './src/redux/store';
+import {StatusBar} from "react-native";
+import {SafeAreaView} from "react-navigation";
 export default class App extends React.Component {
    constructor(props){
     super(props);
@@ -25,7 +27,8 @@ export default class App extends React.Component {
 
     return (
       <Provider store={store}>
-      <AppNavigator/>
+        <StatusBar barStyle={'dark-content'} />
+        <AppNavigator/>
       </Provider>
     );
   }
