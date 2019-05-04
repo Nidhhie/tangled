@@ -10,6 +10,7 @@ class StartScreen extends React.Component {
     }
 
     render() {
+        // can add a spinner or splash screen like image here if lag is visible
         return (
             <View/>
         )

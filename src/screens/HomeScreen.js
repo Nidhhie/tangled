@@ -50,11 +50,13 @@ export default class HomeScreen extends React.Component {
     };
 
     _onRefresh = () => {
+        //dummy method
         this.setState({refreshing: true});
         setTimeout(() => this.setState({refreshing: false}), 1000)
     };
 
     render() {
+        /*TODO remove inline css*/
         return (
             <ScrollView
                 refreshControl={
@@ -104,4 +106,4 @@ const styles = StyleSheet.create({
         height: height / 1.8,
         width
     }
-})
+});

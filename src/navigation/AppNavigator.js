@@ -18,13 +18,13 @@ const AppNavigator = createStackNavigator(data, config);
 const createRootNavigator = createSwitchNavigator(
     {
         Start: {
-            screen: StartScreen
+            screen: StartScreen  //initial route
         },
         App: {
-            screen: AppNavigator
+            screen: AppNavigator //logged in routes in here
         },
         Login: {
-            screen: LoginScreen
+            screen: LoginScreen //logged out/first time user route
         }
     },
     {
