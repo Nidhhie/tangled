@@ -1,8 +1,9 @@
 import React from 'react';
-import {TouchableOpacity,Text,StyleSheet,Image} from 'react-native';
+import {Image, StyleSheet, TouchableOpacity} from 'react-native';
 import Colors from '../Constants/Colors';
 import Images from '../Constants/Images';
 import TangledText from './TangledText';
+import PropTypes from "prop-types";
 
 const WhiteButton = ({title,onPress}) => {
 return(
@@ -26,4 +27,9 @@ const styles = StyleSheet.create({
 
     }
 });
+WhiteButton.propTypes = {
+    title: PropTypes.string.isRequired,
+    onPress:PropTypes.func
+
+};
 export default WhiteButton;

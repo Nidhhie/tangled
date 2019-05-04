@@ -4,6 +4,7 @@ import Gen from '../Utils/Gen';
 import Colors from '../Constants/Colors';
 import TangledText from './TangledText';
 import Images from '../Constants/Images';
+import PropTypes from "prop-types";
 
 const { height, width } = Gen.getDimensions();
 
@@ -40,5 +41,9 @@ const styles = StyleSheet.create({
     playIcon: { height:35, width:35 }
 
 });
+
+TeaserComponent.propTypes = {
+    teaser: PropTypes.object.isRequired
+};
 
 export default TeaserComponent;

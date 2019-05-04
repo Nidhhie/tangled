@@ -2,6 +2,7 @@ import React from 'react';
 import {Text,StyleSheet,TouchableOpacity,Image} from 'react-native';
 import Colors from '../Constants/Colors';
 import TangledText from './TangledText';
+import PropTypes from "prop-types";
 
 const Footer = ({title,onPress,icon}) => (
 <TouchableOpacity onPress={onPress} style={styles.footer}>
@@ -22,6 +23,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
      }
 });
+
+Footer.propTypes = {
+    title: PropTypes.string,
+    icon: PropTypes.func,
+    onPress: PropTypes.func
+};
 
 
 export default Footer;

@@ -1,10 +1,11 @@
 import React from 'react';
-import {Text,View,StyleSheet,TouchableOpacity} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import Colors from '../Constants/Colors';
 import TangledText from "./TangledText";
+import PropTypes from "prop-types";
 
 const NameCard = ({details,onPressEditButton}) => {
-    const {label,option,value} = details;
+    const {label,value} = details;
 return(
     <View style={styles.nameContainer}>
     <View>
@@ -44,4 +45,10 @@ const styles = StyleSheet.create({
         opacity:0.8
     }
 });
+
+NameCard.propTypes = {
+    details: PropTypes.object.isRequired,
+    onPressEditButton: PropTypes.func.isRequired
+};
+
 export default NameCard;
