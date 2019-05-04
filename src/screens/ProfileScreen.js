@@ -1,9 +1,8 @@
 import React from 'react';
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Colors from '../Constants/Colors';
 import NameCard from "../components/NameCard";
 import {customNavigationOptions} from "../navigation/navigationOptions";
-import Gen from "../Utils/Gen";
 import {connect} from 'react-redux';
 import User from "../Constants/User";
 import {bindActionCreators} from "redux";
@@ -81,4 +80,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps,mapDispatchToProps())(ProfileScreen);
+export default connect(mapStateToProps,mapDispatchToProps)(ProfileScreen);

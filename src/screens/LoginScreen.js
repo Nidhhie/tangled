@@ -44,7 +44,8 @@ class LoginScreen extends React.Component {
                     <Heading size={18}>
                         Hey, What should we call you?
                     </Heading>
-                    {User.map((item)=> <FloatingLabelInput
+                    {User.map((item,index)=> <FloatingLabelInput
+                        key={index}
                         label={item.label}
                         value={user[item.name]}
                         onChangeText={(value) => this.handleTextChange(value, item.name)}

@@ -27,13 +27,11 @@ class EditNameScreen extends React.Component{
 
     onSave = async ()=>{
       const {name} = this.state;
-      const user = {};
-      user[this.nameDetails.name] = name;
       if(!name){
           alert('please enter your name');
       }
       else{
-          this.props.saveUser(user);
+          this.props.saveUser({...this.props.user,[this.nameDetails.name] : name});
           alert('name updated successfully');
       }
     };
