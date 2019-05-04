@@ -1,5 +1,16 @@
 import React from 'react';
-import { Text, View, ImageBackground, Image, ScrollView, StyleSheet,RefreshControl } from 'react-native';
+import {
+    Text,
+    View,
+    ImageBackground,
+    Image,
+    ScrollView,
+    StyleSheet,
+    RefreshControl,
+    Platform,
+    StatusBar,
+    KeyboardAvoidingView
+} from 'react-native';
 import Images from '../Constants/Images';
 import Gen from '../Utils/Gen';
 import { LinearGradient } from 'expo';
@@ -7,6 +18,7 @@ import TeaserComponent from '../components/TeaserComponent';
 import WhiteButton from '../components/WhiteButton';
 import Colors from '../Constants/Colors';
 import TangledText from '../components/TangledText';
+import {SafeAreaView} from "react-navigation";
 
 const { height, width } = Gen.getDimensions();
 export default class HomeScreen extends React.Component {
@@ -53,8 +65,10 @@ export default class HomeScreen extends React.Component {
                     />
                 }
                 style={{ flex: 1 }}>
+                <SafeAreaView style={{flex:1}}>
+                    <StatusBar/>
                 <ImageBackground source={Images.tangled} style={styles.tangledImage}>
-                    <LinearGradient style={{ height: height / 2.2 }}
+                    <LinearGradient style={{ height: height / 1.8 }}
                         colors={['transparent', 'transparent', 'transparent', 'black']}>
                         <View style={{ flex: 0.1, justifyContent: 'center', alignItems: 'center' }}>
                             <TangledText style={{ color: Colors.white }}> Pull to refresh </TangledText>
@@ -63,7 +77,7 @@ export default class HomeScreen extends React.Component {
                             <TangledText bold color={Colors.white} size={24}>
                                 Tangled
                         </TangledText>
-                        <TangledText style={{ color: Colors.white,opacity:0.5 }}>
+                        <TangledText style={{ color: Colors.white,opacity: Platform.OS === 'ios'? 0.8 : 0.5 }}>
                         2010   •    7+   •   1h 40m
                          </TangledText>
                             <WhiteButton 
@@ -81,6 +95,7 @@ export default class HomeScreen extends React.Component {
                         />
                     ))
                 }
+                </SafeAreaView>
             </ScrollView>
         )
     }
@@ -88,7 +103,7 @@ export default class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
     tangledImage: {
-        height: height / 2.2,
+        height: height / 1.8,
         width
     }
 })

@@ -7,7 +7,7 @@ import TangledText from "./TangledText";
 const TermsAndConditionsText = () => {
 return(
     <View style={styles.container}>
-        <Image source={Images.checkBox} resizeMode={"container"} style={{height:20,width:20,marginRight:8,marginTop:4}}/>
+        <Image source={Images.checkBox} resizeMode={"contain"} style={{height:20,width:20,marginRight:8,marginTop:4}}/>
         <TangledText style={{color:Colors.textGrey}}>
             By proceeding I agree with <TangledText style={styles.underline}>Terms & Conditions</TangledText>,
             <TangledText style={styles.underline}>Terms of use</TangledText> and
@@ -18,7 +18,7 @@ return(
 };
 
 const styles = StyleSheet.create({
-    container:{marginTop:30,paddingHorizontal:10,flexDirection: 'row',alignItems: 'flex-start'},
+    container:{marginTop:50,paddingHorizontal:10,flexDirection: 'row',alignItems: 'flex-start'},
     underline:{textDecorationLine:'underline',color:Colors.textGrey}
 });
 export default TermsAndConditionsText;

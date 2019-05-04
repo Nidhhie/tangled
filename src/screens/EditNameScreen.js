@@ -9,10 +9,11 @@ import Colors from "../Constants/Colors";
 import Footer from "../components/Footer";
 import FloatingLabelInput from "../components/FloatingLabelInput";
 import TangledText from "../components/TangledText";
+import {SafeAreaView} from "react-navigation";
 
-class EditNameScreen extends React.Component{
+class EditNameScreen extends React.Component {
     static navigationOptions = {
-        header:null
+        header: null
     };
 
     constructor(props) {
@@ -23,36 +24,39 @@ class EditNameScreen extends React.Component{
         }
     };
 
-    handleTextChange = (value) => this.setState({name:value});
+    handleTextChange = (value) => this.setState({name: value});
 
-    onSave = async ()=>{
-      const {name} = this.state;
-      if(!name){
-          alert('please enter your name');
-      }
-      else{
-          this.props.saveUser({...this.props.user,[this.nameDetails.name] : name});
-          alert('name updated successfully');
-      }
+    onSave = async () => {
+        const {name} = this.state;
+        if (!name) {
+            alert('please enter your name');
+        } else {
+            this.props.saveUser({...this.props.user, [this.nameDetails.name]: name});
+            alert('name updated successfully');
+        }
     };
 
-    render(){
+    render() {
         const {name} = this.state;
         const {label} = this.nameDetails;
-        return(
-            <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
+        return (
+            <KeyboardAvoidingView style={{flex: 1}} behavior="padding">
+                <SafeAreaView style={{flex:1}}>
                 <View style={styles.container}>
-                    <Ionicons onPress={()=>this.props.navigation.goBack()} name={'ios-close'} color={Colors.textGrey} size={36}/>
-                    <TangledText bold size={18}>
-                        Update your Name
-                    </TangledText>
-                        <FloatingLabelInput
-                            label={label}
-                            value={name}
-                            onChangeText={this.handleTextChange}
-                        />
+                    <Ionicons onPress={() => this.props.navigation.goBack()}
+                              name={'ios-close'}
+                              color={Colors.textGrey}
+                              style={{marginBottom: 20}}
+                              size={36}/>
+                    <TangledText bold size={18}>Update your Name</TangledText>
+                    <FloatingLabelInput
+                        label={label}
+                        value={name}
+                        onChangeText={this.handleTextChange}
+                    />
                 </View>
                 <Footer onPress={this.onSave} title={"Save"}/>
+                </SafeAreaView>
             </KeyboardAvoidingView>
         )
     }
@@ -61,6 +65,7 @@ class EditNameScreen extends React.Component{
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({saveUser}, dispatch)
 }
+
 const mapStateToProps = (state) => {
     return {
         user: state.user,
@@ -68,8 +73,8 @@ const mapStateToProps = (state) => {
 };
 
 const styles = StyleSheet.create({
-    container: {flex: 1, paddingHorizontal: 25, paddingVertical: 35, height: '100%'}
+    container: {flex: 1, paddingHorizontal: 25, paddingVertical: 10, height: '100%'}
 });
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(EditNameScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(EditNameScreen)

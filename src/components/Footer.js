@@ -8,7 +8,7 @@ const Footer = ({title,onPress,icon}) => (
     <TangledText bold color={Colors.white}>
         {title}
     </TangledText>
-    {icon && <Image source={icon} style={{height:15}} resizeMode={'contain'}/>}
+    {icon ? <Image source={icon} style={{height:15}} resizeMode={'contain'}/> : null}
 </TouchableOpacity>
 );
 
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     footer: {
         backgroundColor: Colors.black,
         width:'100%',
-        height:40,
+        height:55,
         justifyContent:'center',
         alignItems:'center',
         flexDirection: 'row'

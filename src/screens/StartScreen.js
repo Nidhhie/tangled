@@ -6,7 +6,6 @@ import {connect} from 'react-redux'
  class StartScreen extends React.Component{
     async componentDidMount() {
         const {user} = this.props;
-        debugger
         this.props.navigation.navigate(user ? 'App' : 'Login');
     }
 

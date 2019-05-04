@@ -2,13 +2,14 @@ import React from 'react';
 import {bindActionCreators} from "redux";
 import {saveUser} from '../redux/actions';
 import {connect} from 'react-redux';
-import {KeyboardAvoidingView, StyleSheet, View,Text} from "react-native";
+import {KeyboardAvoidingView, StyleSheet, View, Text, ScrollView} from "react-native";
 import Images from "../Constants/Images";
 import FloatingLabelInput from "../components/FloatingLabelInput";
 import TangledText from "../components/TangledText";
 import Footer from "../components/Footer";
 import User from "../Constants/User";
 import TermsAndConditionsText from "../components/TermsAndConditionsText";
+import {SafeAreaView} from "react-navigation";
 
 class LoginScreen extends React.Component {
     static navigationOptions = {
@@ -28,7 +29,7 @@ class LoginScreen extends React.Component {
 
     onContinue = () => {
         let {user} = this.state;
-        if (Object.keys(user).length === 0) {
+        if (!user.firstName || !user.lastName) {
             alert('please enter your name');
             return
         }
@@ -40,6 +41,7 @@ class LoginScreen extends React.Component {
         const {user} = this.state;
         return (
             <KeyboardAvoidingView style={{flex: 1}} behavior="padding">
+                <SafeAreaView style={{flex:1}}>
                 <View style={styles.container}>
                     <TangledText bold size={18}>
                         Hey, What should we call you?
@@ -53,6 +55,7 @@ class LoginScreen extends React.Component {
                     <TermsAndConditionsText/>
                 </View>
                 <Footer onPress={this.onContinue} title={"Continue"} icon={Images.forwardArrow}/>
+                </SafeAreaView>
             </KeyboardAvoidingView>
         )
     }
@@ -60,7 +63,7 @@ class LoginScreen extends React.Component {
 
 
 const styles = StyleSheet.create({
-    container: {flex: 1, paddingHorizontal: 25, paddingVertical: 35, height: '100%'},
+    container: {flex: 1, paddingHorizontal: 25, paddingVertical: 55, height: '100%'},
     underline:{textDecorationLine:'underline'}
 });
 

@@ -16,13 +16,13 @@ const TeaserComponent = ({ teaser }) => {
             </View>
             <Image source={image} style={styles.teaserImage} />
             <View style={styles.footer}>
-                <View style={{ flex: 0.7 }}>
-                <TangledText bold size={18}>
+                <View style={{ flex: 0.8 }}>
+                <TangledText gutterbottom={true} bold>
                     {title}
                 </TangledText>
-                <TangledText>  {details}</TangledText>
+                <TangledText size={14} color={Colors.textGrey}>{details}</TangledText>
                 </View>
-                <View style={{ flex: 0.3,alignItems:'flex-end',justifyContent:'center' }}>
+                <View style={{ flex: 0.2,alignItems:'flex-end',justifyContent:'center' }}>
                 <Image source={Images.playIcon}
                 resizeMode={'contain'}
                  style={styles.playIcon} />       
@@ -33,10 +33,10 @@ const TeaserComponent = ({ teaser }) => {
 };
 const styles = StyleSheet.create({
     container: { backgroundColor: Colors.white },
-    header: { backgroundColor: Colors.black, height: 40, justifyContent: 'center' },
-    footer: { backgroundColor: Colors.white, height: 60, justifyContent: 'center',flexDirection:'row',paddingHorizontal:6 },
+    header: { backgroundColor: Colors.black, paddingVertical:10,justifyContent: 'center' },
+    footer: { backgroundColor: Colors.white, paddingVertical:14, justifyContent: 'center',flexDirection:'row',paddingHorizontal:6 },
     teaserImage: { height: height / 3, width },
-    playIcon: { height:40, width:40 }
+    playIcon: { height:35, width:35 }
 
 });
 

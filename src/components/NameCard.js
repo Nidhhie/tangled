@@ -13,11 +13,11 @@ return(
       </TangledText>
     </View>
     <View style={styles.details}>
-       <TangledText>
+       <TangledText bold>
            {value}
            </TangledText>
         <TouchableOpacity onPress={onPressEditButton}>
-           <TangledText style={styles.textGrey}>
+           <TangledText bold size={14} style={styles.textGrey}>
             Edit
            </TangledText>
         </TouchableOpacity>
@@ -36,10 +36,12 @@ const styles = StyleSheet.create({
    },
     details:{
        flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        alignItems: 'center',
     },
     textGrey:{
-       color:Colors.textGrey
+       color:Colors.textGrey,
+        opacity:0.8
     }
 });
 export default NameCard;

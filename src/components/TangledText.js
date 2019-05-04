@@ -8,7 +8,9 @@ const TangledText = ({children, size, color, gutterbottom, bold, style}) => (
         paddingBottom: gutterbottom,
         fontFamily:bold ?'helvetica-bold' :'helvetica',
         ...style
-    }}> {children} </Text>
+    }}>
+        {children}
+    </Text>
 );
 
 
