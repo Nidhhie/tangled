@@ -41,6 +41,4 @@ const createRootNavigator = createSwitchNavigator(
 );
 
 
-
-
 export default createAppContainer(createRootNavigator);

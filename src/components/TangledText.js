@@ -24,7 +24,7 @@ TangledText.defaultProps = {
 
 TangledText.propTypes = {
     children: PropTypes.any.isRequired,
-    size:  PropTypes.number,
+    size: PropTypes.number,
     color: PropTypes.string,
     gutterbottom: PropTypes.number,
     bold: PropTypes.bool,

@@ -31,7 +31,7 @@ class ProfileScreen extends React.Component {
     };
 
     onPressEditButton = (nameDetails) => {
-        this.props.navigation.navigate('EditName',{nameDetails})
+        this.props.navigation.navigate('EditName', {nameDetails})
     };
 
     static getDerivedStateFromProps(nextProps, prevState) {
@@ -46,12 +46,12 @@ class ProfileScreen extends React.Component {
             <View style={styles.container}>
                 <View style={{flex: 0.4}}>
                     {
-                       User.map((item,index)=> <NameCard
-                                  key={index}
-                                  onPressEditButton={() => this.onPressEditButton({...item, value: user[item.name]})}
-                                  details={{...item, value: user[item.name]}}
-                        />
-                       )}
+                        User.map((item, index) => <NameCard
+                                key={index}
+                                onPressEditButton={() => this.onPressEditButton({...item, value: user[item.name]})}
+                                details={{...item, value: user[item.name]}}
+                            />
+                        )}
                 </View>
                 <TouchableOpacity onPress={this.logout} style={{flex: 0.5, alignItems: 'center'}}>
                     <TangledText style={{color: 'red'}}> Logout </TangledText>
@@ -81,4 +81,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(ProfileScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileScreen);

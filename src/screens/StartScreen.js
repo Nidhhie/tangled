@@ -3,14 +3,14 @@ import {View} from 'react-native';
 import Gen from "../Utils/Gen";
 import {connect} from 'react-redux'
 
- class StartScreen extends React.Component{
+class StartScreen extends React.Component {
     async componentDidMount() {
         const {user} = this.props;
         this.props.navigation.navigate(user ? 'App' : 'Login');
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <View/>
         )
     }

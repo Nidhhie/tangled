@@ -1,8 +1,6 @@
 import ActionTypes from './actionTypes';
 
-const inititalState = {
-
-};
+const inititalState = {};
 const RootReducer = (state = inititalState, action) => {
     switch (action.type) {
         case ActionTypes.SAVE_USER:
